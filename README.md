@@ -140,7 +140,13 @@ The codebase audit lives in [`.planning/codebase/CONCERNS.md`](.planning/codebas
 
 ## License
 
-Personal use / no redistribution for the time being. A proper OSS license will go here once the API shape stabilises. Open an issue if you want to build on the project in the meantime.
+[PolyForm Noncommercial 1.0.0](LICENSE) — source-available, non-commercial.
+
+- ✅ Use it, study it, modify it, share it, fork it for any non-commercial purpose (personal, research, hobby, non-profit, education…).
+- ❌ You may not sell copies, offer it as a paid service, or bundle it into a commercial product. Commercial distribution is reserved to Snitch Team.
+- Attribution (keep the copyright notice) is required.
+
+If you want a commercial license, open an issue.
 
 ---
 
@@ -179,4 +185,10 @@ open FlaYer.xcodeproj
 
 ### Licence
 
-Usage personnel. Une vraie licence open-source viendra quand l'API sera stabilisée.
+[PolyForm Noncommercial 1.0.0](LICENSE) — source-available, non-commerciale.
+
+- ✅ Utilisation, étude, modification, partage et fork libres pour tout usage non commercial (perso, recherche, hobby, asso, éducation…).
+- ❌ Revente, service payant, intégration dans un produit commercial : interdits. La distribution commerciale reste l'exclusivité de Snitch Team.
+- Mention du copyright à conserver.
+
+Pour une licence commerciale, ouvre une issue.
