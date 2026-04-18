@@ -16,6 +16,7 @@ final class AppState {
     var sidebarLetters: [String] = []
     var libraryVersion: Int = 0
     var isInitialized = false
+    let updateChecker = UpdateChecker()
 
     private let settingsKey = "com.flayer.settings"
     private let folderWatcher = FolderWatcher()

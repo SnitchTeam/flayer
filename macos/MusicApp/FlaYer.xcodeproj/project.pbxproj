@@ -66,6 +66,7 @@
 		7A7D975D27BAB0ADCDC3FD6A /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A07A9251969695325ECAC82 /* CacheManager.swift */; };
 		80BE06CB63B3CFDC4EAE21CF /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEF2E908AA3C256E4773355 /* Localization.swift */; };
 		8743CF85D8C9279AA150F36D /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 58BC66C087B16A967863D874 /* GRDB */; };
+		89571DB3D08BDBD5530056E6 /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65ECA25131DD34229EBE804 /* UpdateChecker.swift */; };
 		8A7F83B8645D2F861A7D7805 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57D67DF757F92E5B3A24EA5 /* SearchView.swift */; };
 		8CA0F5D1F8146B4B66698125 /* SubsonicClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746E4E58362C37928EB9084E /* SubsonicClient.swift */; };
 		8E9E4D3A17584CEBD7DD215F /* PlayerIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4450F74D2E077A73D8B6B /* PlayerIntents.swift */; };
@@ -216,6 +217,7 @@
 		C2C4ED366A81040FA7030FA6 /* WidgetDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataProvider.swift; sourceTree = "<group>"; };
 		C57D67DF757F92E5B3A24EA5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		C5971A6D280B5E7C4A07CD41 /* ServerBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerBrowserView.swift; sourceTree = "<group>"; };
+		C65ECA25131DD34229EBE804 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
 		C92699E636A1C09DDDAF0374 /* PlayerPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPillView.swift; sourceTree = "<group>"; };
 		CD3FB6A4359B51FD91F0526F /* EqualizerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualizerSettingsView.swift; sourceTree = "<group>"; };
 		CE55F7C004584F4A7958A274 /* SMBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMBClient.swift; sourceTree = "<group>"; };
@@ -442,6 +444,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		825C058AB37FAF654EFF394A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C65ECA25131DD34229EBE804 /* UpdateChecker.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		8400E140C03FF33E01B47CD2 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +485,7 @@
 				353C7C8FFDED8CF9355532DD /* App */,
 				388095E62D0B8434DC2800CD /* Audio */,
 				D8298358EC1347B02BBA7A7B /* Scanner */,
+				825C058AB37FAF654EFF394A /* Services */,
 				23EE1831946CEC56D58D3269 /* Stores */,
 				B3CDE179C191650642485F20 /* Views */,
 			);
@@ -822,6 +833,7 @@
 				18977733EF650DCDCA29A1E5 /* TemporalGrouping.swift in Sources */,
 				A0955DBB80DD9467A8DA854F /* TouchBarController.swift in Sources */,
 				FE0BF3FA6C74458ACD546095 /* TrackListView.swift in Sources */,
+				89571DB3D08BDBD5530056E6 /* UpdateChecker.swift in Sources */,
 				FB5D01BD7BC45AEA02B7C35F /* WatchModels.swift in Sources */,
 				0204625F43644A9420A51765 /* WidgetDataProvider.swift in Sources */,
 				9DC4C7AA1870291BCD757AF7 /* WidgetState.swift in Sources */,

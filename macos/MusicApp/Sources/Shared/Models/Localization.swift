@@ -219,6 +219,42 @@ enum Lang {
     static var clearCache: String { current == "fr" ? "Vider le cache" : "Clear Cache" }
     static var cacheCleared: String { current == "fr" ? "Cache vidé" : "Cache Cleared" }
 
+    // MARK: - Settings: Software Update
+    static var softwareUpdate: String { current == "fr" ? "Mise à jour" : "Software update" }
+    static var checkForUpdates: String { current == "fr" ? "Vérifier les mises à jour" : "Check for updates" }
+    static var inProgress: String { current == "fr" ? "En cours…" : "In progress…" }
+    static var restartToInstall: String { current == "fr" ? "Redémarrer pour installer" : "Restart to install" }
+    static var restartConfirmTitle: String {
+        current == "fr" ? "Redémarrer FlaYer pour installer la mise à jour ?" : "Restart FlaYer to install the update?"
+    }
+    static var restartNow: String { current == "fr" ? "Redémarrer" : "Restart" }
+    static var updateViaHomebrew: String {
+        current == "fr"
+            ? "Installé via Homebrew — utiliser `brew upgrade --cask flayer`."
+            : "Installed via Homebrew — use `brew upgrade --cask flayer`."
+    }
+    static func updateIdle(_ version: String) -> String {
+        current == "fr" ? "Version \(version). Aucune recherche effectuée." : "Version \(version). Not yet checked."
+    }
+    static var updateChecking: String { current == "fr" ? "Recherche de mises à jour…" : "Checking for updates…" }
+    static func updateUpToDate(_ version: String) -> String {
+        current == "fr" ? "À jour — version \(version)." : "Up to date — version \(version)."
+    }
+    static func updateAvailable(_ version: String) -> String {
+        current == "fr" ? "Version \(version) disponible." : "Version \(version) available."
+    }
+    static var updateDownloading: String { current == "fr" ? "Téléchargement…" : "Downloading…" }
+    static var updateInstalling: String { current == "fr" ? "Installation…" : "Installing…" }
+    static func updateReadyToRestart(_ version: String) -> String {
+        current == "fr" ? "Version \(version) prête. Redémarrer pour installer." : "Version \(version) ready. Restart to install."
+    }
+    static func updateError(_ message: String) -> String {
+        current == "fr" ? "Erreur : \(message)" : "Error: \(message)"
+    }
+    static func downloadAndInstall(_ version: String) -> String {
+        current == "fr" ? "Télécharger et installer \(version)" : "Download and install \(version)"
+    }
+
     // MARK: - Onboarding
     static var emptyLibrary: String { current == "fr" ? "Aucune musique" : "No music yet" }
     static var emptyLibraryHint: String { current == "fr" ? "Ajoutez un dossier dans les réglages" : "Add a folder in settings" }

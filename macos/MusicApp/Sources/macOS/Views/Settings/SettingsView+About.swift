@@ -1,5 +1,152 @@
 import SwiftUI
 
+/// Software-update panel for the About tab. Drives UpdateChecker through
+/// its Status state machine: check → available? → download & stage →
+/// restart to install. Homebrew-installed copies short-circuit with a
+/// `brew upgrade --cask flayer` hint since replacing the bundle in place
+/// would leave the cask manifest stale.
+private struct SoftwareUpdateCard: View {
+    @Bindable var checker: UpdateChecker
+    @State private var confirmingRestart = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(Lang.softwareUpdate)
+                .font(.caption)
+                .foregroundStyle(.gray)
+
+            VStack(alignment: .leading, spacing: 10) {
+                statusLine
+                actionRow
+                releaseNotesBlock
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .glassCard()
+        }
+    }
+
+    @ViewBuilder
+    private var statusLine: some View {
+        HStack(spacing: 8) {
+            icon
+            Text(statusText)
+                .font(.system(size: 12))
+                .foregroundStyle(.white)
+                .textSelection(.enabled)
+            Spacer()
+        }
+    }
+
+    @ViewBuilder
+    private var icon: some View {
+        switch checker.status {
+        case .checking, .downloading, .installing:
+            ProgressView()
+                .controlSize(.small)
+                .tint(.white)
+        case .upToDate:
+            Image(systemName: "checkmark.circle")
+                .foregroundStyle(.green)
+        case .available, .readyToRestart:
+            Image(systemName: "arrow.down.circle.fill")
+                .foregroundStyle(.blue)
+        case .error:
+            Image(systemName: "exclamationmark.triangle")
+                .foregroundStyle(.orange)
+        case .idle:
+            Image(systemName: "arrow.clockwise")
+                .foregroundStyle(.gray)
+        }
+    }
+
+    private var statusText: String {
+        switch checker.status {
+        case .idle:
+            return Lang.updateIdle(checker.currentVersion)
+        case .checking:
+            return Lang.updateChecking
+        case .upToDate:
+            return Lang.updateUpToDate(checker.currentVersion)
+        case let .available(version, _, _):
+            return Lang.updateAvailable(version)
+        case .downloading:
+            return Lang.updateDownloading
+        case .installing:
+            return Lang.updateInstalling
+        case let .readyToRestart(version):
+            return Lang.updateReadyToRestart(version)
+        case let .error(message):
+            return Lang.updateError(message)
+        }
+    }
+
+    @ViewBuilder
+    private var actionRow: some View {
+        if checker.installedViaHomebrew {
+            Text(Lang.updateViaHomebrew)
+                .font(.system(size: 11))
+                .foregroundStyle(.gray)
+                .textSelection(.enabled)
+        } else {
+            HStack {
+                actionButton
+                Spacer()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var actionButton: some View {
+        switch checker.status {
+        case .idle, .upToDate, .error:
+            Button(Lang.checkForUpdates) {
+                Task { await checker.check() }
+            }
+            .buttonStyle(.borderedProminent)
+        case let .available(version, _, downloadURL):
+            Button(Lang.downloadAndInstall(version)) {
+                Task { await checker.downloadAndStage(version: version, from: downloadURL) }
+            }
+            .buttonStyle(.borderedProminent)
+        case .checking, .downloading, .installing:
+            Button(Lang.inProgress) {}
+                .buttonStyle(.bordered)
+                .disabled(true)
+        case .readyToRestart:
+            Button(Lang.restartToInstall) {
+                confirmingRestart = true
+            }
+            .buttonStyle(.borderedProminent)
+            .confirmationDialog(
+                Lang.restartConfirmTitle,
+                isPresented: $confirmingRestart,
+                titleVisibility: .visible
+            ) {
+                Button(Lang.restartNow, role: .destructive) {
+                    checker.restartAndInstall()
+                }
+                Button(Lang.cancel, role: .cancel) {}
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var releaseNotesBlock: some View {
+        if case let .available(_, notes, _) = checker.status, !notes.isEmpty {
+            Divider().background(Color.white.opacity(0.05))
+            ScrollView {
+                Text(notes)
+                    .font(.system(size: 11))
+                    .foregroundStyle(.gray)
+                    .textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .frame(maxHeight: 140)
+        }
+    }
+}
+
 /// Reads the cover-art cache directory off the main thread on appearance
 /// and displays the formatted size. Avoids blocking `body` on a synchronous
 /// FileManager.contentsOfDirectory + per-file stat pass when the cache has
@@ -58,6 +205,9 @@ extension SettingsView {
                 .padding(.vertical, 12)
             }
             .glassCard()
+
+            // Software update
+            SoftwareUpdateCard(checker: appState.updateChecker)
 
             // Library stats
             VStack(alignment: .leading, spacing: 8) {
