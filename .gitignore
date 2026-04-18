@@ -1,0 +1,47 @@
+# Node (legacy renderer stub)
+node_modules
+out
+dist
+
+# macOS
+.DS_Store
+*.log
+
+# Xcode build artefacts
+build/
+DerivedData/
+*.xcarchive
+
+# Xcode user settings — personal to each checkout
+xcuserdata/
+*.xcuserstate
+project.xcworkspace/xcshareddata/swiftpm/checkouts/
+project.xcworkspace/xcshareddata/swiftpm/repositories/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+**/swiftpm/checkouts/
+**/swiftpm/repositories/
+**/xcuserdata/
+
+# Release output
+build/release/
+*.dmg
+
+# GSD / internal tooling
+.planning/
+**/.superpowers/
+**/docs/superpowers/
+**/docs/plans/
+
+# Keep the historical DMG in docs/page out of git
+macos/MusicApp/docs/page/*.dmg
+
+# Env / secrets (defensive — repo has none today)
+.env
+.env.*
+*.pem
+*.p12
+*.p8

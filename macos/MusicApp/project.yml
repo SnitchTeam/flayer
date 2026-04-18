@@ -1,0 +1,159 @@
+name: FlaYer
+options:
+  bundleIdPrefix: com.flayer
+  deploymentTarget:
+    macOS: "14.0"
+    iOS: "17.0"
+    watchOS: "10.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+
+schemes:
+  FlaYer:
+    build:
+      targets:
+        FlaYer: all
+  FlaYer-iOS:
+    build:
+      targets:
+        FlaYer-iOS: all
+  FlaYer-Watch:
+    build:
+      targets:
+        FlaYer-Watch: all
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+
+packages:
+  GRDB:
+    url: https://github.com/groue/GRDB.swift
+    from: "7.0.0"
+  AMSMB2:
+    url: https://github.com/amosavian/AMSMB2.git
+    from: "4.0.0"
+
+targets:
+  FlaYer:
+    type: application
+    platform: macOS
+    sources:
+      - Sources/Shared
+      - Sources/macOS
+    resources:
+      - path: Sources/macOS/App/AppIcon.icns
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.flayer.macos
+        INFOPLIST_FILE: Sources/macOS/App/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Sources/macOS/App/FlaYer.entitlements
+        PRODUCT_NAME: FlaYer
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
+        ENABLE_HARDENED_RUNTIME: YES
+    dependencies:
+      - package: GRDB
+    info:
+      path: Sources/macOS/App/Info.plist
+      properties:
+        CFBundleName: FlaYer
+        CFBundleDisplayName: FlaYer
+        CFBundleIdentifier: com.flayer.macos
+        CFBundleVersion: "2"
+        CFBundleShortVersionString: "1.1"
+        CFBundlePackageType: APPL
+        CFBundleExecutable: FlaYer
+        LSMinimumSystemVersion: "14.0"
+        NSHighResolutionCapable: true
+        CFBundleIconFile: AppIcon
+        CFBundleIconName: ""
+        CFBundleURLTypes:
+          - CFBundleURLName: com.flayer.macos
+            CFBundleURLSchemes:
+              - flayer
+    entitlements:
+      path: Sources/macOS/App/FlaYer.entitlements
+      properties:
+        com.apple.security.app-sandbox: false
+        com.apple.security.files.user-selected.read-write: true
+
+  FlaYer-iOS:
+    type: application
+    supportedDestinations: [iOS]
+    sources:
+      - Sources/Shared
+      - Sources/iOS
+      - Sources/iOS/Resources
+    resources:
+      - path: Sources/iOS/Assets.xcassets
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.flayer.ios
+        PRODUCT_NAME: FlaYer
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - package: GRDB
+      - package: AMSMB2
+        embed: true
+    info:
+      path: Sources/iOS/App/Info.plist
+      properties:
+        CFBundleName: FlaYer
+        CFBundleDisplayName: FlaYer
+        CFBundleIdentifier: com.flayer.ios
+        CFBundleVersion: "2"
+        CFBundleShortVersionString: "1.1"
+        CFBundlePackageType: APPL
+        CFBundleExecutable: FlaYer
+        UILaunchStoryboardName: ""
+        UIBackgroundModes:
+          - audio
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        "UISupportedInterfaceOrientations~ipad":
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        LSSupportsOpeningDocumentsInPlace: true
+        UISupportsDocumentBrowser: false
+
+  FlaYer-Watch:
+    type: application
+    platform: watchOS
+    sources:
+      - Sources/Shared/WatchModels
+      - path: Sources/Shared/Models/Localization.swift
+        type: file
+      - Sources/watchOS
+    resources:
+      - path: Sources/watchOS/Assets.xcassets
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.flayer.ios.watchkitapp
+        PRODUCT_NAME: "FlaYer Watch"
+        WATCHOS_DEPLOYMENT_TARGET: "10.0"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies: []
+    info:
+      path: Sources/watchOS/App/Info.plist
+      properties:
+        CFBundleName: FlaYer Watch
+        CFBundleDisplayName: FlaYer
+        CFBundleIdentifier: com.flayer.ios.watchkitapp
+        CFBundleVersion: "2"
+        CFBundleShortVersionString: "1.1"
+        CFBundlePackageType: APPL
+        CFBundleExecutable: "FlaYer Watch"
+        WKApplication: true
+        WKCompanionAppBundleIdentifier: com.flayer.ios
+    entitlements:
+      path: Sources/watchOS/App/FlaYerWatch.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.flayer
