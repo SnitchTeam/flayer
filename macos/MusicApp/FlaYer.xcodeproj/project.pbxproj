@@ -38,6 +38,7 @@
 		39573CB60960B701B6D11F0F /* AddServerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEBAD6DF44E6F36670D95A1 /* AddServerSheet.swift */; };
 		3B00C1E39EDFB7098E09D5E9 /* EqualizerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3FB6A4359B51FD91F0526F /* EqualizerSettingsView.swift */; };
 		4103A07216F6B70EEE373D12 /* NavigationPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4654C7C76B7EF8354ACA8 /* NavigationPillView.swift */; };
+		418C357074604488C8FA4599 /* KeyboardShortcutMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1DCB07B89D2EAA8EE76E60 /* KeyboardShortcutMonitor.swift */; };
 		4237EC7DBC8DA3E3093E6169 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194B78377DD2670A6CE7A423 /* OnboardingView.swift */; };
 		4528063AAE12D02D86F3BD72 /* AudioDeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B4AD094C69B55E0360D658 /* AudioDeviceManager.swift */; };
 		45634E237151E4B278E18142 /* CoverArtArchiveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2362B6B9A61574F892026D89 /* CoverArtArchiveService.swift */; };
@@ -200,6 +201,7 @@
 		A1EC5AA1E367DCC66E033FE0 /* ArtistDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailView.swift; sourceTree = "<group>"; };
 		A4574CDC613A34986646B22A /* wifi-transfer.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "wifi-transfer.html"; sourceTree = "<group>"; };
 		AAC4654C7C76B7EF8354ACA8 /* NavigationPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPillView.swift; sourceTree = "<group>"; };
+		AF1DCB07B89D2EAA8EE76E60 /* KeyboardShortcutMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutMonitor.swift; sourceTree = "<group>"; };
 		B1A06F80A3DD301A6B1F2460 /* NotConnectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotConnectedView.swift; sourceTree = "<group>"; };
 		B4459E16F9E68DE88B5363AC /* DockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DockView.swift; sourceTree = "<group>"; };
 		B4524F993190904F572C1802 /* FlaYer-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlaYer-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,6 +328,7 @@
 				3D2323341E2B6DC19DCB8332 /* FlaYer.entitlements */,
 				3784D757B8CFC5FCF011F015 /* FlaYerApp.swift */,
 				F39029645B364A9B416A773E /* Info.plist */,
+				AF1DCB07B89D2EAA8EE76E60 /* KeyboardShortcutMonitor.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				08364487BF8B5242CECE40D3 /* FolderWatcher.swift in Sources */,
 				BDD34F20731648A53F07B6A5 /* GlassModifiers.swift in Sources */,
 				388B8484A85BDF70BBC2E4B7 /* HeadphonePresets.swift in Sources */,
+				418C357074604488C8FA4599 /* KeyboardShortcutMonitor.swift in Sources */,
 				1A2A0D242BBC25539C8C6CC1 /* LibraryScanner.swift in Sources */,
 				96640F97D153F16D77AB792E /* Localization.swift in Sources */,
 				BFFF0FCC26ABA306322CB68B /* LyricsService.swift in Sources */,

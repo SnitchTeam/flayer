@@ -3,6 +3,7 @@ import SwiftUI
 @main
 struct FlaYerApp: App {
     @State private var appState = AppState()
+    @State private var keyMonitor = KeyboardShortcutMonitor()
 
     var body: some Scene {
         WindowGroup {
@@ -24,6 +25,7 @@ struct FlaYerApp: App {
             .background(.black)
             .onAppear {
                 appState.initialize()
+                keyMonitor.attach(player: appState.player)
             }
             .onReceive(NotificationCenter.default.publisher(for: NSApplication.willTerminateNotification)) { _ in
                 appState.player.cleanupBeforeQuit()
