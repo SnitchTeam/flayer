@@ -76,6 +76,7 @@ struct PlayerPillView: View {
                                 Image(systemName: isFavorite ? "heart.fill" : "heart")
                                     .font(.system(size: 12))
                                     .foregroundStyle(isFavorite ? .pink : .gray.opacity(0.5))
+                                    .hitTarget(28)
                             }
                             .buttonStyle(.plain)
 
@@ -83,6 +84,7 @@ struct PlayerPillView: View {
                                 Image(systemName: "plus")
                                     .font(.system(size: 12))
                                     .foregroundStyle(.gray.opacity(0.5))
+                                    .hitTarget(28)
                             }
                             .buttonStyle(.plain)
                         }
@@ -93,6 +95,7 @@ struct PlayerPillView: View {
                         Image(systemName: isNavTop ? "chevron.up" : "chevron.down")
                             .font(.system(size: 10, weight: .bold))
                             .foregroundStyle(.gray)
+                            .hitTarget(28)
                     }
                     .buttonStyle(.plain)
                 }
@@ -126,6 +129,7 @@ struct PlayerPillView: View {
                             Image(systemName: "shuffle")
                                 .font(.system(size: 11))
                                 .foregroundStyle(player.shuffle ? .white : .gray.opacity(0.5))
+                                .hitTarget(28)
                         }
                         .buttonStyle(.plain)
 
@@ -133,6 +137,7 @@ struct PlayerPillView: View {
                             Image(systemName: "backward.fill")
                                 .font(.system(size: 14))
                                 .foregroundStyle(.gray)
+                                .hitTarget(30)
                         }
                         .buttonStyle(.plain)
 
@@ -143,6 +148,7 @@ struct PlayerPillView: View {
                                 .frame(width: 32, height: 32)
                                 .background(Color.white.opacity(0.1))
                                 .clipShape(Circle())
+                                .contentShape(Circle())
                         }
                         .buttonStyle(.plain)
 
@@ -150,6 +156,7 @@ struct PlayerPillView: View {
                             Image(systemName: "forward.fill")
                                 .font(.system(size: 14))
                                 .foregroundStyle(.gray)
+                                .hitTarget(30)
                         }
                         .buttonStyle(.plain)
 
@@ -157,6 +164,7 @@ struct PlayerPillView: View {
                             Image(systemName: "stop.fill")
                                 .font(.system(size: 10))
                                 .foregroundStyle(.gray.opacity(0.5))
+                                .hitTarget(28)
                         }
                         .buttonStyle(.plain)
                     }
@@ -168,6 +176,7 @@ struct PlayerPillView: View {
                         Image(systemName: volumeIcon(player.volume))
                             .font(.system(size: 12))
                             .foregroundStyle(.gray.opacity(0.5))
+                            .hitTarget(28)
                     }
                     .buttonStyle(.plain)
                     .overlay(alignment: isNavTop ? .top : .bottom) {
@@ -329,6 +338,7 @@ struct MiniPlayerPillView: View {
                         Image(systemName: "backward.fill")
                             .font(.system(size: 12))
                             .foregroundStyle(.gray)
+                            .hitTarget(28)
                     }
                     .buttonStyle(.plain)
 
@@ -336,6 +346,7 @@ struct MiniPlayerPillView: View {
                         Image(systemName: player.state == .playing ? "pause.fill" : "play.fill")
                             .font(.system(size: 14))
                             .foregroundStyle(.white)
+                            .hitTarget(30)
                     }
                     .buttonStyle(.plain)
 
@@ -343,6 +354,7 @@ struct MiniPlayerPillView: View {
                         Image(systemName: "forward.fill")
                             .font(.system(size: 12))
                             .foregroundStyle(.gray)
+                            .hitTarget(28)
                     }
                     .buttonStyle(.plain)
                 }
@@ -352,6 +364,7 @@ struct MiniPlayerPillView: View {
                         .font(.system(size: 10, weight: .bold))
                         .foregroundStyle(.gray)
                         .padding(8)
+                        .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
             }

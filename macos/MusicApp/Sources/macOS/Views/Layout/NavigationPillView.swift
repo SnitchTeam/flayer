@@ -57,6 +57,7 @@ struct NavigationPillView: View {
                 .font(.system(size: 12, weight: .bold))
                 .foregroundStyle(.gray)
                 .padding(8)
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }
@@ -83,6 +84,7 @@ struct NavigationPillView: View {
                                 .matchedGeometryEffect(id: "activeTab", in: tabNamespace)
                         }
                     }
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
         }
@@ -117,6 +119,7 @@ struct NavigationPillView: View {
                             .matchedGeometryEffect(id: "activeTab", in: tabNamespace)
                     }
                 }
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }

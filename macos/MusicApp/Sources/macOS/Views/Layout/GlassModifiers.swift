@@ -11,6 +11,18 @@ enum Anim {
     static let micro = Animation.easeOut(duration: 0.15)
 }
 
+// MARK: - Hit Target
+
+extension View {
+    /// Grow the tap area around an icon-sized label to at least `size × size`
+    /// and make the full rectangle hit-testable. Without this a small
+    /// `Image(systemName:)` button only reacts on pixels the glyph covers.
+    func hitTarget(_ size: CGFloat = 32) -> some View {
+        frame(minWidth: size, minHeight: size)
+            .contentShape(Rectangle())
+    }
+}
+
 struct GlassPill: ViewModifier {
     func body(content: Content) -> some View {
         content
