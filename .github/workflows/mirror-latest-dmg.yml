@@ -1,0 +1,25 @@
+name: Mirror latest DMG as FlaYer.dmg
+on:
+  release:
+    types: [published]
+permissions:
+  contents: write
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      TAG: ${{ github.event.release.tag_name }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Download versioned DMG
+        run: |
+          rm -rf /tmp/mirror && mkdir -p /tmp/mirror
+          gh release download "$TAG" --repo "$REPO" --pattern 'FlaYer-*.dmg' --dir /tmp/mirror
+      - name: Duplicate as FlaYer.dmg
+        run: |
+          src=$(ls /tmp/mirror/FlaYer-*.dmg | head -n1)
+          [ -n "$src" ] || { echo "no versioned DMG found" >&2; exit 1; }
+          cp "$src" /tmp/mirror/FlaYer.dmg
+      - name: Upload FlaYer.dmg to the release
+        run: gh release upload "$TAG" /tmp/mirror/FlaYer.dmg --clobber --repo "$REPO"
